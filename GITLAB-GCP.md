@@ -6,13 +6,15 @@
 
 I partially followed [these deprecated instructions](https://about.gitlab.com/handbook/marketing/product-marketing/demo/gke-setup/), to set up a domain, get a fixed ip, and link the domain to the fixed ip using Google Cloud DNS.
 
-Register a domain using [namecheap service](www.namecheap.com) or equivalent service.
+Register a domain using [namecheap](www.namecheap.com) or equivalent service.
 Make NS Records for 3 'hosts' (gitlab, registry, minio).
-Google Cloud DNS provided the values; in my case:
+Google Cloud DNS provided the values; they typically are:
 * ns-cloud-d1.googledomains.com.
-* ns-cloud-d1.googledomains.com.
-* ns-cloud-d1.googledomains.com.
-* ns-cloud-d1.googledomains.com.
+* ns-cloud-d2.googledomains.com.
+* ns-cloud-d3.googledomains.com.
+* ns-cloud-d4.googledomains.com.
+
+![namecheap advanced dns](./namecheap.png)
 
 So make 4 * 3 = 12 NS Records.
 Make sure email forwarding is also set up (admin@edonis.club forwards to my private email address cbonami@gmail.com)

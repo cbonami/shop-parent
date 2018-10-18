@@ -27,15 +27,17 @@ gcloud projects add-iam-policy-binding shop -- member serviceAccount:travisci@re
 
 ## Reserve a domain name
 
-I used namecheap.com to register a domain 'edonis.xyz'.
+You can use [namecheap.com](www.namecheap.com) or equivalent service to register a domain, in my case 'edonis.xyz'.
 
 Make NS Records for 'host' named 'shop'. In my case, this means that the final application will be available on 'shop.edonis.xyz'.
 [Google Cloud DNS](https://console.cloud.google.com/net-services/dns/zones) provided the values; they are typically:
 
 * ns-cloud-d1.googledomains.com.
-* ns-cloud-d1.googledomains.com.
-* ns-cloud-d1.googledomains.com.
-* ns-cloud-d1.googledomains.com.
+* ns-cloud-d2.googledomains.com.
+* ns-cloud-d3.googledomains.com.
+* ns-cloud-d4.googledomains.com.
+
+![namecheap advanced dns](./namecheap.png)
 
 ## Deploy GCE Ingress
 
@@ -122,9 +124,11 @@ shop-gateway-ingress-resource   *         104.155.6.44   80        3m
 
 Check if gateway-app is available by pointing your browser to [http://<loadbalancer-ip>/actuator/health](http://35.233.125.101/actuator/health).
 
-## Create a NS Record
+## Register LoadBalancer IP in DNS
 
-Create a NS Record for the subdomain 'shop' (or something else) in namecheap.com.
+Create an A-Record for the LB's IP in the subdomain '*' in Google Cloud DNS.
+
+![GCP Cloud DNS](./gcp_cloud_dns.png)
 
 ## Varia
 
